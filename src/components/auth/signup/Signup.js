@@ -6,6 +6,9 @@ import TextFieldGrop from "../../common/TextFieldGroup";
 import validateSignupInput from "../../../validation/signup";
 import { signUpUser } from "../../../actions/authActions";
 import isEmpty from "../../../utils/is-Empty";
+
+import AuthImageCol from "../authImageCol/AuthImageCol";
+import { MainSection, SignupRow, SignupCol } from "./Signup.styles";
 const Signup = () => {
   // const typeOption = [
   //   { label: "Organization", value: "Organization" },
@@ -66,91 +69,98 @@ const Signup = () => {
   }, [isValidInput, name, organization, password, email]);
 
   return (
-    <div className="signup">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8 m-auto">
-            <h1 className="display-4 text-center">Sign Up</h1>
+    <MainSection>
+      <SignupRow>
+        <SignupCol xs={12} md={6} lg={6}>
+          <AuthImageCol />
+        </SignupCol>
+        <SignupCol xs={12} md={6} lg={6} >
+          {/* <div className="signup">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-8 m-auto"> */}
+          <h1 className="display-4 text-center">WELCOME !</h1>
+          <p className="text-center">First time here?</p>
+          <p className="text-center">Create account</p>
 
-            <form onSubmit={onSubmit}>
-              <TextFieldGrop
-                placeholder="name"
-                name="name"
-                value={name}
-                onChange={onChange}
-                error={
-                  !isValidInput
-                    ? !isEmpty(errors.name)
-                      ? errors.name
-                      : ""
-                    : ""
-                }
-              />
+          <form onSubmit={onSubmit}>
+            <TextFieldGrop
+              placeholder="name"
+              name="name"
+              value={name}
+              onChange={onChange}
+              error={
+                !isValidInput ? (!isEmpty(errors.name) ? errors.name : "") : ""
+              }
+            />
 
-              {/* <SelectListGroup
+            {/* <SelectListGroup
                 placeholder="Type"
                 name="Type"
                 options={typeOption}
                 info="Type"
               /> */}
 
-              <TextFieldGrop
-                placeholder="Name of Organization"
-                name="organization"
-                value={organization}
-                onChange={onChange}
-                error={
-                  !isValidInput
-                    ? !isEmpty(errors.organization)
-                      ? errors.organization
-                      : ""
+            <TextFieldGrop
+              placeholder="Name of Organization"
+              name="organization"
+              value={organization}
+              onChange={onChange}
+              error={
+                !isValidInput
+                  ? !isEmpty(errors.organization)
+                    ? errors.organization
                     : ""
-                }
-              />
-              <TextFieldGrop
-                type="email"
-                placeholder="Email Address"
-                name="email"
-                value={email}
-                onChange={onChange}
-              />
+                  : ""
+              }
+            />
+            <TextFieldGrop
+              type="email"
+              placeholder="Email Address"
+              name="email"
+              value={email}
+              onChange={onChange}
+            />
 
-              <TextFieldGrop
-                type="password"
-                placeholder="Password"
-                name="password"
-                value={password}
-                onChange={onChange}
-                error={
-                  !isValidInput
-                    ? !isEmpty(errors.password)
-                      ? errors.password
-                      : ""
+            <TextFieldGrop
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={onChange}
+              error={
+                !isValidInput
+                  ? !isEmpty(errors.password)
+                    ? errors.password
                     : ""
-                }
-              />
+                  : ""
+              }
+            />
 
-              <TextFieldGrop
-                type="password"
-                placeholder="Confirm Password"
-                name="password2"
-                value={password2}
-                onChange={onChange}
-                error={
-                  !isValidInput
-                    ? !isEmpty(errors.password2)
-                      ? errors.password2
-                      : ""
+            <TextFieldGrop
+              type="password"
+              placeholder="Confirm Password"
+              name="password2"
+              value={password2}
+              onChange={onChange}
+              error={
+                !isValidInput
+                  ? !isEmpty(errors.password2)
+                    ? errors.password2
                     : ""
-                }
-              />
+                  : ""
+              }
+            />
 
-              <input type="submit" className="btn btn-info btn-block mt-4" />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+            <input type="submit" className="btn btn-info btn-block mt-4" />
+          </form>
+          {/* </div>
+              </div>
+            </div>
+          </div> */}
+        </SignupCol>
+      </SignupRow>
+    </MainSection>
   );
 };
 
